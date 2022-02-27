@@ -6,16 +6,13 @@ from placer import Replacer
 
 pattern = "(\\^\d+\\$)"
 
-def load(input:str,charset:str="utf8",flat:bool=True):
-    with open(input,"r",encoding=charset) as fd:
-        lines = fd.readlines()
-        return "".join(lines) if flat else lines
-
 def loadList(input:str,charset:str="utf8")->Iterable[str]:
-    return load(input,charset,False)
+    with open(input,"r",encoding=charset) as fd:
+        return fd.readlines()
 
 def loadStr(input:str,charset:str="utf8",flat:bool=True)->str:
-    return load(input,charset,True)
+    with open(input,"r",encoding=charset) as fd:
+        return fd.read()
 
 def save(content:str,output:str,charset:str="utf8",suffix:str=""):
     with open(output,"w",encoding=charset) as fd:
